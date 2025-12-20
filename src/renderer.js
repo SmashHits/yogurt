@@ -482,7 +482,7 @@ async function render() {
 
       ctx.font = haveFont ? "bold 48px MainFont" : "bold 48px sans-serif";
       ctx.fillText("comment 'ENTER' to participate", WIDTH / 2, HEIGHT * 0.52);
-      ctx.fillText("(subscribers get an extra ball per round)", WIDTH / 2, HEIGHT * 0.58);
+      ctx.fillText("(subscribers get an extra ball)", WIDTH / 2, HEIGHT * 0.58);
 
       showWinnerFrames++;
       if (showWinnerFrames >= totalWinnerFrames) {
@@ -515,4 +515,5 @@ render().catch(err => {
   console.error("Renderer error:", err);
   process.exit(1);
 });
+
 
