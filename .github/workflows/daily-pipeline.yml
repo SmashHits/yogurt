@@ -1,0 +1,32 @@
+name: Daily Pipeline
+
+on:
+  schedule:
+    # Runs every day at noon UTC (adjust timezone if needed)
+    - cron: "0 12 * * *"
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+  run_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set env
+        run: |
+          echo "YOUTUBE_CLIENT_ID=${{ secrets.YOUTUBE_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "YOUTUBE_CLIENT_SECRET=${{ secrets.YOUTUBE_CLIENT_SECRET }}" >> $GITHUB_ENV
+          echo "YOUTUBE_REFRESH_TOKEN=${{ secrets.YOUTUBE_REFRESH_TOKEN }}" >> $GITHUB_ENV
+          # Add any other environment variables here
+
+      - name: Run pipeline
+        run: node run_pipeline.js
