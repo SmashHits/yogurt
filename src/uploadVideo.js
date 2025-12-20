@@ -77,7 +77,7 @@ async function upload() {
         categoryId: "20",
       },
       status: {
-        privacyStatus: process.env.UPLOAD_PRIVACY || "public",
+        privacyStatus: process.env.UPLOAD_PRIVACY || "private",
         selfDeclaredMadeForKids: false,
       },
     },
