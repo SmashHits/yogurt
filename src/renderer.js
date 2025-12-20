@@ -241,7 +241,15 @@ async function render() {
   }
 
   // entrants
-  let activePlayers = loadPlayers();
+  let activePlayers = Object.keys(playersJSON).map(id => {
+    const p = playersJSON[id];
+    return {
+      id: id,
+      name: p.name,
+      totalBalls: p.balls, // max balls per round
+      currentBalls: p.balls, // will decrement if some are eliminated
+    };
+  });
 
   if (activePlayers.length === 0) {
     console.warn("No players found — using fallback placeholders");
@@ -312,6 +320,10 @@ async function render() {
     spawnIndex = 0;
     pendingBalls = [];
     nextRoundPlayers = [];
+  
+    // reset currentBalls for surviving players only
+    activePlayers.forEach(p => p.currentBalls = p.totalBalls);
+  
     spawning = true;
     spawnTimer = 0;
     console.log(`--- START ROUND ${round} — players: ${activePlayers.length} ---`);
@@ -322,12 +334,10 @@ async function render() {
 
   // spawn a ball for a specific player index
   function spawnBallForPlayer(player) {
-    const count = player.balls || 1;
-
-    for (let i = 0; i < count; i++) {
-      const ball = makeBall(player.id + ":" + i);
-      pendingBalls.push({ player, ball });
-    }
+    if (player.currentBalls <= 0) return;
+    const ball = makeBall(player.id);
+    pendingBalls.push({ player, ball });
+    player.currentBalls--;
   }
 
   // main loop via setInterval, writing frames to ffmpeg
@@ -505,3 +515,4 @@ render().catch(err => {
   console.error("Renderer error:", err);
   process.exit(1);
 });
+
