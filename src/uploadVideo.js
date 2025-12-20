@@ -50,12 +50,12 @@ async function upload() {
   Day ${day} of making my viewers compete against each other.
 
   How to enter:
-  • Comment "ENTER" on any Short
+  • Comment "ENTER" - that's it!
   • Public subscribers get 2 balls
 
   New video every day.
 
-  #shorts #youtubeshorts
+  #shorts #youtubeshorts #satisfying #simulation #physics #simulations #memes
   `.trim();
 
   console.log("STEP 5: Uploading...");
@@ -77,7 +77,7 @@ async function upload() {
         categoryId: "20",
       },
       status: {
-        privacyStatus: process.env.UPLOAD_PRIVACY || "private",
+        privacyStatus: process.env.UPLOAD_PRIVACY || "public",
         selfDeclaredMadeForKids: false,
       },
     },
