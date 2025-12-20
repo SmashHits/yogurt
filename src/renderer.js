@@ -321,8 +321,14 @@ async function render() {
     pendingBalls = [];
     nextRoundPlayers = [];
   
-    // reset currentBalls for surviving players only
-    activePlayers.forEach(p => p.currentBalls = p.totalBalls);
+    // DON’T reset currentBalls blindly
+    // Only increment for subscriber bonus if needed
+    activePlayers.forEach(p => {
+      if (p.totalBalls > 1) {
+        // bonus for subscriber: add one extra ball only if not already spawned
+        p.currentBalls = Math.min(p.currentBalls + 1, p.totalBalls);
+      }
+    });
   
     spawning = true;
     spawnTimer = 0;
@@ -515,5 +521,6 @@ render().catch(err => {
   console.error("Renderer error:", err);
   process.exit(1);
 });
+
 
 
