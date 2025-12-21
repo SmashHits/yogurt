@@ -56,7 +56,7 @@ async function main() {
       const snippet = item.snippet.topLevelComment.snippet;
       const text = snippet.textDisplay.trim().toUpperCase();
 
-      if (!text.includes("ENTER")) continue;
+      if (!["enter", "join", "me"].some(w => text.toLowerCase().includes(w))) continue;
 
       const channelId = snippet.authorChannelId?.value;
       if (!channelId) continue;
