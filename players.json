@@ -444,8 +444,8 @@
     "name": "@hale5630",
     "enteredVia": "shorts",
     "joinedAt": "2025-12-25T20:23:54.353Z",
-    "isPublicSub": true,
-    "balls": 2
+    "isPublicSub": false,
+    "balls": 1
   },
   "UC9i7Ap19ICh6zmIq9OJyjoQ": {
     "name": "@Cheifplus124",
@@ -689,6 +689,13 @@
     "name": "@TheTrainsGentlyADHDGuy",
     "enteredVia": "shorts",
     "joinedAt": "2025-12-30T21:49:02.305Z",
+    "isPublicSub": false,
+    "balls": 1
+  },
+  "UCF2JqYRgxJjJvWGbcNmTPJw": {
+    "name": "@12TeZeRd",
+    "enteredVia": "shorts",
+    "joinedAt": "2025-12-31T20:23:21.443Z",
     "isPublicSub": false,
     "balls": 1
   }
