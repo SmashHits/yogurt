@@ -285,11 +285,11 @@ async function render() {
     }
 
     // Draw zones
-    ctx.fillStyle = "rgba(0,120,0,0.08)";
+    ctx.fillStyle = "rgba(0,120,0,0.3)";
     ctx.fillRect(0, HEIGHT - 220, edgeBins * binWidth, 220);
     ctx.fillRect(WIDTH - edgeBins * binWidth, HEIGHT - 220, edgeBins * binWidth, 220);
 
-    ctx.fillStyle = "rgba(180,20,20,0.08)";
+    ctx.fillStyle = "rgba(180,20,20,0.3)";
     ctx.fillRect(edgeBins * binWidth, HEIGHT - 220, WIDTH - edgeBins * 2 * binWidth, 220);
 
     // Spawn balls
@@ -417,3 +417,4 @@ render().catch(err => {
   console.error("Renderer error:", err);
   process.exit(1);
 });
+
